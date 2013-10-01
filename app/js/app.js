@@ -1,10 +1,51 @@
-'use strict';
+var app = angular.module('todoyall',[]);
 
+function TodoController($scope){
+    $scope.todos = [
+        { text : "Write this app",
+         done : false }
+    ];
+    
+    $scope.editMode = false;
+    
+    $scope.toggleEdit = function(){ $scope.editMode=!$scope.editMode;
+                                  }
 
-// Declare app level module which depends on filters, and services
-angular.module('myApp', ['myApp.filters', 'myApp.services', 'myApp.directives', 'myApp.controllers']).
-  config(['$routeProvider', function($routeProvider) {
-    $routeProvider.when('/view1', {templateUrl: 'partials/partial1.html', controller: 'MyCtrl1'});
-    $routeProvider.when('/view2', {templateUrl: 'partials/partial2.html', controller: 'MyCtrl2'});
-    $routeProvider.otherwise({redirectTo: '/view1'});
-  }]);
+    $scope.add = function(form){
+        if (form.$invalid){
+            return;
+        }
+        $scope.todos.push({ text : $scope.newTodo,
+         done : false });
+        
+        $scope.newTodo = "";
+        $scope.datToDoForm.$setPristine();
+    }
+    
+    $scope.removeMe = function(index){
+        $scope.todos.splice(index,1);
+    }
+    
+};
+app.directive('noBlank', function() {
+    return { 
+    require: 'ngModel',
+    link: function(scope, element, attrs, controller) {
+    
+    var validate = function(value){
+       if (value == undefined || value == ""){
+           controller.$setValidity('noBlank',false);
+           return undefined;
+       }else{
+           controller.$setValidity('noBlank',true);
+           return value;
+       }
+    };
+        
+    controller.$parsers.push(validate);
+    controller.$formatters.push(validate);
+    
+    }
+    };
+});
+
