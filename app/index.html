@@ -18,7 +18,7 @@
     <div ng-show="datToDoForm.newTodo.$error.noBlank && datToDoForm.$dirty">Don't be shooting blanks</div>
     </form>
     <ul>
-        <li ng-repeat="todo in todos | orderBy:'text'" class="done-{{todo.done}}">
+        <li  ng-repeat="todo in todos | orderBy:'text'" class="done-{{todo.done}}">
             <input 
                    type="button" 
                    ng-show="editMode" 
@@ -28,6 +28,7 @@
                    ng-model="todo.done">
             <span ng-bind="todo.text"></span>
         </li>
+        <li ng-show="todos.length == 0">Nothing to do. Bored?</li>
     </ul>
     
     {{todos | json }}
