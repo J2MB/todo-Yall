@@ -1,4 +1,4 @@
-j2mb.controller("TodoController",function($scope){
+j2mb.app.controller("TodoController",function($scope){
     $scope.todos = [
         { text : "Write this app",
          done : false }
