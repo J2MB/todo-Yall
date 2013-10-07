@@ -47,4 +47,3 @@ j2mb.app.directive('noBlank', function() {
     }
     };
 });
-
