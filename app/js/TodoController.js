@@ -1,8 +1,7 @@
-j2mb.app.controller("TodoController",function($scope){
-    $scope.todos = [
-        { text : "Write this app",
-         done : false }
-    ];
+j2mb.app.controller("TodoController",function($scope, TodoDataService){
+    $scope.todos = TodoDataService.list; 
+    
+    var count = $scope.todos.length;
     
     $scope.editMode = false;
     
@@ -14,7 +13,7 @@ j2mb.app.controller("TodoController",function($scope){
             return;
         }
         $scope.todos.push({ text : $scope.newTodo,
-         done : false });
+         done : false , id : count++});
         
         $scope.newTodo = "";
         $scope.datToDoForm.$setPristine();

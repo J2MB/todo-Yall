@@ -7,3 +7,13 @@ j2mb.app.config(function($routeProvider) {
     when('/details/:index', {templateUrl: 'partials/todoItem.html', controller: 'TodoItemController'}).
       otherwise({redirectTo: '/'});
 });
+
+j2mb.app.factory("TodoDataService", function(){
+    var data = {};
+    data.list = [
+        { text : "Write this app",
+         done : false }
+    ];
+    //This is a thing!
+    return data;
+});
