@@ -1,24 +1,22 @@
-<div ng-controller="TodoController">
-    <h1>MY TODO LIST!!</h1>
-    <form name="datToDoForm" ng-submit="add(datToDoForm)" novalidate>
-    <input type="text" ng-model="newTodo" no-blank no-repeats name="newTodo">
-    <input type="submit" ng-disabled="datToDoForm.$invalid" value="add">
-    <input type="button" value="{{ editMode ? 'done' : 'edit' }}" ng-click="toggleEdit()">
-    <div ng-show="datToDoForm.newTodo.$error.noBlank && datToDoForm.$dirty">Don't be shooting blanks</div>
-    </form>
-    <ul>
-        <li  ng-repeat="todo in todos | orderBy:'text'" class="done-{{todo.done}}">
-            <input 
-                   type="button" 
-                   ng-show="editMode" 
-                   value="Kill!" 
-                   ng-click="removeMe($index)"/>
-            <input type="checkbox"
-                   ng-model="todo.done">
-            <a href="#/details/{{todo.id}}"><span ng-bind="todo.text"></span></a>
-        </li>
-        <li ng-show="todos.length == 0">Nothing to do. Bored?</li>
-    </ul>
-    
-    {{todos | json }}
-</div>
+<h1>MY TODO LIST!!</h1>
+<form name="datToDoForm" ng-submit="add(datToDoForm)" novalidate>
+<input type="text" ng-model="newTodo" no-blank no-repeats name="newTodo">
+<input type="submit" ng-disabled="datToDoForm.$invalid" value="add">
+<input type="button" value="{{ editMode ? 'done' : 'edit' }}" ng-click="toggleEdit()">
+<div ng-show="datToDoForm.newTodo.$error.noBlank && datToDoForm.$dirty">Don't be shooting blanks</div>
+</form>
+<ul>
+    <li  ng-repeat="todo in todos | orderBy:'text'" class="done-{{todo.done}}">
+        <input 
+               type="button" 
+               ng-show="editMode" 
+               value="Kill!" 
+               ng-click="removeMe($index)"/>
+        <input type="checkbox"
+               ng-model="todo.done">
+        <a href="#/details/{{todo.id}}"><span ng-bind="todo.text"></span></a>
+    </li>
+    <li ng-show="todos.length == 0">Nothing to do. Bored?</li>
+</ul>
+
+{{todos | json }}
