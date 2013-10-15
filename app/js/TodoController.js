@@ -1,4 +1,5 @@
-j2mb.app.controller("TodoController",function($scope, TodoDataService){
+angular.module('todoyall')
+.controller("TodoController",function($scope, TodoDataService){
     $scope.todos = TodoDataService.list; 
     
     var count = $scope.todos.length;
@@ -19,9 +20,7 @@ j2mb.app.controller("TodoController",function($scope, TodoDataService){
         $scope.newTodo = "";
         $scope.datToDoForm.$setPristine();
     }
-});
-	
-j2mb.app.directive('noBlank', function() {
+}).directive('noBlank', function() {
     return { 
     require: 'ngModel',
     link: function(scope, element, attrs, controller) {
