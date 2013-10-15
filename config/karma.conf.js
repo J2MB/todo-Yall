@@ -3,13 +3,12 @@ module.exports = function(config){
     basePath : '../',
 
     files : [
-      'https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.2/angular.js',
+        'https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.2/angular.js',
         'https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.2/angular-route.js',
-      'test/lib/angular/angular-mocks.js',
-      'app/js/app.js',
-        'app/js/TodoController.js',
-        'app/js/TodoItemController.js',
-    'test/unit/**/*.js'],
+        'test/lib/angular/angular-mocks.js',
+        'app/js/app.js',
+        'app/js/*.js',
+        'test/unit/**/*.js'],
 
     exclude: ['app/lib/angular/angular-scenario.js'],
 
