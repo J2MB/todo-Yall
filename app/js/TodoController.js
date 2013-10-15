@@ -5,8 +5,9 @@ j2mb.app.controller("TodoController",function($scope, TodoDataService){
     
     $scope.editMode = false;
     
-    $scope.toggleEdit = function(){ $scope.editMode=!$scope.editMode;
-                                  }
+    $scope.toggleEdit = function() {
+        $scope.editMode=!$scope.editMode;
+    }
 
     $scope.add = function(form){
         if (form.$invalid){
@@ -18,11 +19,6 @@ j2mb.app.controller("TodoController",function($scope, TodoDataService){
         $scope.newTodo = "";
         $scope.datToDoForm.$setPristine();
     }
-    
-    $scope.removeMe = function(index){
-        $scope.todos.splice(index,1);
-    }
-    
 });
 	
 j2mb.app.directive('noBlank', function() {

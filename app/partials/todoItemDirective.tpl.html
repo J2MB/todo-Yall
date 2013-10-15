@@ -1,0 +1,8 @@
+<input 
+       type="button" 
+       ng-show="editMode" 
+       value="Kill!" 
+       ng-click="removeMe(todo.id)">
+<input type="checkbox"
+       ng-model="todo.done">
+<a href="#/details/{{todo.id}}"><span ng-bind="todo.text"></span></a>

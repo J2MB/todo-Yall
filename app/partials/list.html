@@ -7,16 +7,12 @@
 </form>
 <ul>
     <li  ng-repeat="todo in todos | orderBy:'text'" class="done-{{todo.done}}">
-        <input 
-               type="button" 
-               ng-show="editMode" 
-               value="Kill!" 
-               ng-click="removeMe($index)"/>
-        <input type="checkbox"
-               ng-model="todo.done">
-        <a href="#/details/{{todo.id}}"><span ng-bind="todo.text"></span></a>
+        <todo-item 
+           item='todo'
+           edit-mode='editMode'>
+        </todo-item>
     </li>
     <li ng-show="todos.length == 0">Nothing to do. Bored?</li>
 </ul>
 
-{{todos | json }}
+Todos: {{todos | json }}

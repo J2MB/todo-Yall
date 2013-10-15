@@ -22,6 +22,28 @@ j2mb.app.factory("TodoDataService", function(){
           id: 0
         }
     ];
-    //This is a thing!
+    data.removeMe = function(targetId){
+        for(var i in data.list){
+            if (data.list[i].id === targetId){
+                data.list.splice(i,1);
+                return;
+            }   
+        }
+    }
     return data;
+});
+
+j2mb.app.directive('todoItem', function(TodoDataService) {
+    var directiveDefinitionObject = {
+        templateUrl: 'partials/todoItemDirective.tpl.html',
+        restrict: 'E',
+        scope: {
+            todo: "=item",
+            editMode: "="
+        },
+        controller: function($scope){
+            $scope.removeMe = TodoDataService.removeMe;
+        }
+    };
+    return directiveDefinitionObject;
 });
